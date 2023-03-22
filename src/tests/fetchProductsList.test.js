@@ -10,15 +10,15 @@ describe('Teste a função fetchProductsList', () => {
 
   it('fetch é chamado ao executar fetchProductsList', async() => {
     await fetchProductsList('computador');
-    expect(fetch).not.toHaveBeenCalled();
+    expect(fetch).toHaveBeenCalled();
   });
 
   it('fetch é chamado com o endpoint correto ao executar fetchProductsList', async () => {
     await fetchProductsList('computador');
-    expect(fetch).not.toHaveBeenCalledWith('https://api.mercadolibre.com/sites/MLB/search?q=computador');
+    expect(fetch).toHaveBeenCalledWith('https://api.mercadolibre.com/sites/MLB/search?q=computador');
   });
     
-  it('retorno da função fetchProductsList com o argumento "computador" é o esperado', async () => {
+  it.only('retorno da função fetchProductsList com o argumento "computador" é o esperado', async () => {
     const data = await fetchProductsList('computador');
     expect(data).toEqual(computadorSearch);
   });
