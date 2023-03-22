@@ -3,7 +3,7 @@ import { removeCartID } from './cartFunctions';
 // Esses comentários que estão antes de cada uma das funções são chamados de JSdoc,
 // experimente passar o mouse sobre o nome das funções e verá que elas possuem descrições!
 
-// Fique a vontade para modificar o código já escrito e criar suas próprias funções!
+// Fique a vontade para modificar o código já escrito e criar suas própria funções!
 
 /**
  * Função responsável por criar e retornar o elemento de imagem do produto.
