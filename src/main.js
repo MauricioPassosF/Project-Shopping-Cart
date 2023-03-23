@@ -1,6 +1,6 @@
 import { searchCep } from './helpers/cepFunctions';
 import './style.css';
-import { fetchProductsList } from './helpers/fetchFunctions';
+import { fetchProductsList, fetchProduct } from './helpers/fetchFunctions';
 import { createProductElement } from './helpers/shopFunctions';
 
 document.querySelector('.cep-button').addEventListener('click', searchCep);
@@ -28,3 +28,7 @@ const getProducts = async (search) => {
   } finally { loadingRemove(); }
 };
 getProducts('computador');
+const resultado = await fetchProduct('MLB1405519561');
+// const pegarId = await fetchProductsList('computador');
+// console.log(pegarId);
+console.log(resultado);
