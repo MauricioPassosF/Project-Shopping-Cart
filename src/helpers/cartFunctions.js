@@ -8,7 +8,7 @@ export const getSavedCartIDs = () => {
 };
 
 /**
- * Função que adiciona um product ao carrinho.
+ * Função que adiciona um product ao carrinh.
  * @param {string} id - ID do product a ser adicionado.
  */
 export const saveCartID = (id) => {
