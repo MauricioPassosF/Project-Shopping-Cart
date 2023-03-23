@@ -4,8 +4,8 @@ import product from './mocks/product';
 
 // implemente seus testes aqui
 describe('Teste a função fetchProduct', () => {
-  it('...', () => {
-    expect(typeof fetchProduct).toBe('function');
+  it('fetchProduct é uma função', () => {
+   expect(typeof fetchProduct).toBe('function');
   });
 
   it('fetch é chamado ao executar fetchProduct', async() => {
@@ -19,11 +19,10 @@ describe('Teste a função fetchProduct', () => {
   });
 
   it('retorno da função fetchProduct com o argumento "MLB1405519561" é o esperado', async () => {
-    const data = await fetchProduct('MLB1405519561');
-    expect(data).toEqual(product);
+    expect( await fetchProduct('MLB1405519561')).toEqual(product);
   });
 
-    // it('retorno de erro com a mensagem certa ao passar a funcao sem parametro', () => {
-  //   expect(() => {fetchProduct()}).toThrow(new Error('ID não informado'));
-  // });
+  it('retorno de erro com a mensagem certa ao passar a funcao sem parametro', async () => {
+    await expect(fetchProduct()).rejects.toEqual(new Error('ID não informado'));
+  });
 });

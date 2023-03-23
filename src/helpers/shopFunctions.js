@@ -124,7 +124,6 @@ export const createProductElement = ({ id, title, thumbnail, price }) => {
   section.appendChild(cartButton);
   cartButton.addEventListener('click', async () => {
     const data = await fetchProduct(id);
-    // console.log(data);
     const cartProducts = document.querySelector('.cart__products');
     cartProducts.appendChild(createCartProductElement(data));
     saveCartID(id);
