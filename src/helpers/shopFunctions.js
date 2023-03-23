@@ -123,10 +123,14 @@ export const createProductElement = ({ id, title, thumbnail, price }) => {
   );
   section.appendChild(cartButton);
   cartButton.addEventListener('click', async () => {
-    const data = await fetchProduct(id);
-    const cartProducts = document.querySelector('.cart__products');
-    cartProducts.appendChild(createCartProductElement(data));
-    saveCartID(id);
+    try {
+      const data = await fetchProduct(id);
+      const cartProducts = document.querySelector('.cart__products');
+      cartProducts.appendChild(createCartProductElement(data));
+      saveCartID(id);
+    } catch (error) {
+      return error.message;
+    }
   });
   return section;
 };
