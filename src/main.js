@@ -4,12 +4,21 @@ import { fetchProductsList } from './helpers/fetchFunctions';
 import { createProductElement } from './helpers/shopFunctions';
 
 document.querySelector('.cep-button').addEventListener('click', searchCep);
+const loadingText = document.createElement('h2');
+const products = document.querySelector('.products');
+
+const loadingAdd = () => {
+  loadingText.innerHTML = 'carregando...';
+  loadingText.className = 'loading';
+  products.appendChild(loadingText);
+};
+
+const loadingRemove = () => { loadingText.remove(); };
 
 const getProducts = async (search) => {
-  const products = document.querySelector('.products');
+  loadingAdd();
   const list = await fetchProductsList(search);
+  loadingRemove();
   list.forEach((element) => { products.appendChild(createProductElement(element)); });
 };
 getProducts('computador');
-// const products = await fetchProductsList('computer');
-// createProductElement(products);
