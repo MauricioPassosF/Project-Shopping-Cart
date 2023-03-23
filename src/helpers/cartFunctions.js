@@ -7,6 +7,16 @@ export const getSavedCartIDs = () => {
   return cartProducts ? JSON.parse(cartProducts) : [];
 };
 
+export const getSavedPrice = () => {
+  const cartProducts = localStorage.getItem('totalPrice');
+  return cartProducts ? JSON.parse(cartProducts) : 0;
+};
+
+export const savePrice = (priceString) => {
+  const price = Number(priceString);
+  localStorage.setItem('totalPrice', JSON.stringify(price));
+};
+
 /**
  * Função que adiciona um product ao carrinh.
  * @param {string} id - ID do product a ser adicionado.

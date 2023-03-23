@@ -2,17 +2,19 @@ import { searchCep } from './helpers/cepFunctions';
 import './style.css';
 import { fetchProduct, fetchProductsList } from './helpers/fetchFunctions';
 import { createProductElement, createCartProductElement } from './helpers/shopFunctions';
-import { getSavedCartIDs } from './helpers/cartFunctions';
+import { getSavedCartIDs, getSavedPrice } from './helpers/cartFunctions';
 
 document.querySelector('.cep-button').addEventListener('click', searchCep);
 const h2 = document.createElement('h2');
 const products = document.querySelector('.products');
 const cartProducts = document.querySelector('.cart__products');
+const cartTotalPrice = document.querySelector('.total-price');
 
 const addCartOnload = async () => {
   const prodInfos = await Promise.all(getSavedCartIDs().map((id) => (fetchProduct(id))));
   prodInfos
     .forEach((info) => cartProducts.appendChild(createCartProductElement(info)));
+  cartTotalPrice.innerText = getSavedPrice();
 };
 const addText = (text, addClass) => {
   h2.innerHTML = text;
@@ -36,7 +38,3 @@ const getProducts = async (search) => {
 };
 addCartOnload();
 getProducts('computador');
-// const resultado = await fetchProduct('MLB1405519561');
-// const pegarId = await fetchProductsList('computador');
-// console.log(pegarId);
-// console.log(resultado);
